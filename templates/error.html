@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="content-card error-status">
+    <h2>操作失敗</h2>
+    <p>{{ message }}</p>
+    <footer style="margin-top: 2rem;">
+        <a href="{{ url_for('index') }}" class="outline">返回首頁</a>
+    </footer>
+</article>
+{% endblock %}

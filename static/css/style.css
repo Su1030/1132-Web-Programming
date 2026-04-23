@@ -1,0 +1,142 @@
+/* =========================================
+   1. 顏色與全域變數調控區 (Color Control Center)
+   ========================================= */
+:root {
+    /* 主色調：影響 [所有主按鈕、輸入框聚焦邊框、頭像背景] */
+    --primary-color: #3b82f6; 
+    
+    /* 輔助色調：影響 [次要文字、標籤說明、返回首頁按鈕文字、導覽列連結] */
+    --secondary-color: #64748b; 
+    
+    /* 錯誤警示色：影響 [錯誤頁面頂部邊條、錯誤標題、驗證失敗提示文字] */
+    --error-color: #ef4444; 
+    
+    /* 全域背景漸層：影響 [整個網頁的最底層背景色] */
+    --bg-gradient: linear-gradient(135deg, #388eff 0%, #ff1dfb 100%); 
+    
+    /* 卡片陰影：影響 [登入/註冊/歡迎/錯誤頁面白色卡片的立體感] */
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); 
+    
+    /* 圓角設定：影響 [所有卡片、按鈕、輸入框、資訊區塊的圓潤程度] */
+    --radius: 16px; 
+    
+    /* 動畫過渡：影響 [按鈕縮放、顏色變換的平滑時間] */
+    --transition: all 0.3s ease; 
+
+    /* --- 新增細節控制變數 --- */
+    --card-bg: rgba(255, 255, 255, 0.8);            /* 影響：所有內容卡片的背景顏色 */
+    --info-bg: #f8fafc;            /* 影響：歡迎頁資訊區塊的淺灰色背景 */
+    --table-header-bg: #f1f5f9;    /* 影響：會員清單表格標題列的顏色 */
+}
+
+h1, h2, h3, p, strong {
+    color: #000000 !important;
+}
+    
+/* =========================================
+   2. 通用設計 (Common Design)
+   ========================================= */
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* 導覽列：使用背景模糊技術提升質感 */
+header.container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* 內容卡片：統一樣式，運用 --card-shadow 與 --radius */
+.content-card {
+    background: var(--card-bg) !important;
+    padding: 2.5rem !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    margin-bottom: 2rem;
+    animation: slideUp 0.5s ease-out;
+}
+
+/* 表單元件：受 --primary-color 控制 */
+input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}
+
+button {
+    background-color: var(--primary-color) !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: var(--transition) !important;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+/* 進場動畫 */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   3. 頁面專屬細節 (Specialized Sections)
+   ========================================= */
+
+/* --- 歡迎頁面基本資訊區塊 --- */
+.info-list {
+    text-align: left;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--info-bg);
+    border-radius: var(--radius);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* --- 會員清單表格區塊 --- */
+.table-container {
+    overflow-x: auto;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: var(--card-shadow);
+}
+
+table thead th {
+    background-color: var(--table-header-bg);
+    color: var(--secondary-color);
+}
+
+/* --- 錯誤頁面警示區塊 --- */
+.error-status {
+    border-top: 8px solid var(--error-color) !important;
+}
+
+.error-status h2 {
+    color: var(--error-color);
+}

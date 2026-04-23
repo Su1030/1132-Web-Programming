@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="content-card">
+    <h2>註冊會員</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="帳號" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="密碼" required>
+        <input type="tel" name="phone" placeholder="電話" required>
+        <input type="date" name="birthdate" required>
+        <button type="submit">註冊</button>
+    </form>
+</article>
+
+{% endblock %}

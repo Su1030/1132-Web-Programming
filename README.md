@@ -1,12 +1,12 @@
 ## 📑 專案目錄
 
-  * [功能特點](https://www.google.com/search?q=%23-%E5%8A%9F%E8%83%BD%E7%89%B9%E9%BB%9E)
-  * [技術棧](https://www.google.com/search?q=%23-%E6%8A%80%E8%A1%93%E6%A3%A7)
-  * [畫面預覽](https://www.google.com/search?q=%23-%E7%95%AB%E9%9D%A2%E9%A0%90%E8%A6%BD)
-  * [安裝與執行步驟](https://www.google.com/search?q=%23-%E5%AE%89%E8%A3%9D%E8%88%87%E5%9F%B7%E8%A1%8C%E6%AD%A5%E9%A9%9F)
-  * [專案結構](https://www.google.com/search?q=%23-%E5%B0%88%E6%A1%88%E7%B5%90%E6%A7%8B)
-  * [開發細節](https://www.google.com/search?q=%23-%E9%96%8B%E7%99%BC%E7%B4%B0%E7%AF%80)
-  * [授權條款](https://www.google.com/search?q=%23-%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE)
+  * 功能特點
+  * 技術棧
+  * 畫面預覽
+  * 安裝與執行步驟
+  * 專案結構
+  * 開發細節
+  * 授權條款
 
 -----
 
@@ -33,11 +33,11 @@
 
 ## 📸 畫面預覽
 
-> *(提示：你可以在此處上傳你的截圖並替換下方連結)*
+ <img width="1919" height="770" alt="image" src="https://github.com/user-attachments/assets/b0a81a0a-7aae-4114-b44c-813ff7d4f509" />
 
-  * **首頁**: 清爽的導覽列與背景漸層設計。
-  * **歡迎頁**: 集中式卡片佈局，清晰顯示使用者註冊資訊。
-  * **會員清單**: 自動遮蔽敏感資訊（電話中間四碼）與民國年轉換。
+ <img width="1900" height="907" alt="image" src="https://github.com/user-attachments/assets/ef85964d-7534-43c7-8868-7d2934d4f35f" />
+
+ <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/ce2894a8-116b-43ab-8cd7-7a3be16cc951" />
 
 -----
 
@@ -110,11 +110,3 @@ project/
 ## 📜 授權條款
 
 本專案採用 **MIT License** 授權。
-
------
-
-### GitHub 基本檔案建議
-
-1.  **About 描述**: `Flask 簡易會員系統 - 1132 Web 程式設計第 2 次小考。具備 JSON 存取、CSS 模塊化設計與自定義 Filter 功能。`
-2.  **Topics (標籤)**: `python`, `flask`, `web-development`, `css-variables`, `university-project`.
-3.  **LICENSE**: 在 GitHub 介面點擊 "Add file" -\> "Create new file"，輸入檔名 `LICENSE`，選擇 **MIT** 模板即可。

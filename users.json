@@ -13,6 +13,14 @@
             "password": "12341234",
             "phone": "0123456789",
             "birthdate": "2026-04-23"
+        },
+        {
+            "username": "test001",
+            "email": "test001@test.com",
+            "password": "11111111",
+            "phone": "0912345678",
+            "birthdate": "2026-05-04",
+            "is_admin": false
         }
     ]
 }

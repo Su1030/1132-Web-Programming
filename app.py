@@ -4,15 +4,11 @@ import re
 from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
-# 設定 Secret Key 以啟用 Session
 app.secret_key = 'your_secret_key_here'
 
 JSON_FILE = 'users.json'
 
-# --- 工具函式區 ---
-
 def read_users():
-    """讀取 JSON 檔案，若檔案損壞或不存在則初始化"""
     if not os.path.exists(JSON_FILE):
         return {"users": []}
     try:
@@ -22,22 +18,17 @@ def read_users():
         return {"users": []}
 
 def save_users(data):
-    """寫入 JSON 檔案"""
     with open(JSON_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-# --- Jinja2 自定義過濾器 ---
-
 @app.template_filter('mask_phone')
 def mask_phone(phone):
-    """電話遮罩：0912345678 -> 0912****78"""
     if phone and len(phone) == 10:
         return f"{phone[:4]}****{phone[8:]}"
     return phone
 
 @app.template_filter('format_tw_date')
 def format_tw_date(date_str):
-    """西元年轉民國年：1990-01-01 -> 79/01/01"""
     if not date_str: return ""
     try:
         y, m, d = date_str.split('-')
@@ -45,8 +36,6 @@ def format_tw_date(date_str):
         return f"{tw_y}/{m}/{d}"
     except:
         return date_str
-
-# --- 路由與邏輯區 ---
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -61,7 +50,6 @@ def register_route():
         phone = request.form.get('phone', '')
         birthdate = request.form.get('birthdate')
 
-        # 基礎驗證
         if not (username and email and password and birthdate):
             return redirect(url_for('error_route', message="所有必填欄位不可為空"))
         
@@ -79,18 +67,18 @@ def register_route():
             if u['username'] == username or u['email'] == email:
                 return redirect(url_for('error_route', message="帳號或 Email 已被註冊"))
 
-        # 寫入資料
         new_user = {
             "username": username,
             "email": email,
             "password": password,
             "phone": phone,
             "birthdate": birthdate,
-            "is_admin": (username == 'admin') # 預設 admin 帳號為管理者
+            "is_admin": (username == 'admin')
         }
         data['users'].append(new_user)
         save_users(data)
-        return redirect(url_for('login_route'))
+        
+        return render_template('welcome.html', username=username, email=email, phone=phone, birthdate=birthdate)
     
     return render_template('register.html')
 
@@ -135,7 +123,6 @@ def profile():
         new_birthdate = request.form.get('birthdate')
         new_password = request.form.get('password')
 
-        # 檢查 Email 是否與他人重複
         for u in data['users']:
             if u['email'] == new_email and u['username'] != session['username']:
                 return redirect(url_for('error_route', message="Email 已被其他會員使用"))
@@ -161,7 +148,7 @@ def users_list_route():
 @app.route('/users/<username>/edit', methods=['GET', 'POST'])
 def edit_user_route(username):
     if not session.get('is_admin'):
-        return redirect(url_for('error_route', message="權解不足"))
+        return redirect(url_for('error_route', message="權限不足"))
     
     data = read_users()
     target_user = next((u for u in data['users'] if u['username'] == username), None)

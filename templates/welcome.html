@@ -1,37 +1,44 @@
 {% extends "base.html" %}
 
-{% block title %}歡迎 - 會員系統{% endblock %}
+{% block title %}註冊成功 - 會員系統{% endblock %}
 
 {% block content %}
 <article class="content-card">
-    <header style="text-align: center;">
-        <h2 style="margin-bottom: 0.5rem; color: var(--error-color) !important;">🎉 歡迎回來，{{ user.username }}！</h2>
-        <p style="color: var(--secondary-color) !important;">以下是您的個人註冊資訊：</p>
+    <header class="content-title" style="text-align: center;">
+        <h2 style="margin-bottom: 0.5rem; color: var(--primary-color) !important;">🎉 註冊成功！</h2>
+        <p style="color: var(--secondary-color) !important;">歡迎加入，{{ username }}！以下是您的註冊資訊：</p>
     </header>
 
-    <div class="info-list">
+    <div class="info-list" style="background: rgba(59, 130, 246, 0.05); border-left: 5px solid var(--primary-color);">
         <div class="info-item">
             <span class="info-label">使用者名稱</span>
-            <span>{{ user.username }}</span>
+            <p>{{ username }}</p>
         </div>
         <div class="info-item">
-            <span class="info-label">電子郵件</span>
-            <span>{{ user.email }}</span>
+            <span class="info-label">電子信箱</span>
+            <p>{{ email }}</p>
         </div>
         <div class="info-item">
-            <span class="info-label">聯絡電話</span>
-            <span>{{ user.phone }}</span>
+            <span class="info-label">電話號碼</span>
+            <p>{{ phone }}</p>
         </div>
         <div class="info-item">
             <span class="info-label">出生日期</span>
-            <span>{{ user.birthdate }}</span>
+            <p>{{ birthdate }}</p>
         </div>
     </div>
+    <p style="text-align: center; font-size: 0.9rem; opacity: 0.8;">
+        帳號已建立完成，現在您可以嘗試登入系統。
+    </p>
 
     <footer style="margin-top: 2rem;">
         <div class="grid">
-            <a href="{{ url_for('users_list_route') }}" class="contrast">查看會員清單</a>
-            <a href="{{ url_for('index') }}" class="outline">返回首頁</a>
+            <form action="{{ url_for('login_route') }}" method="GET" style="display: inline;">
+                <button type="submit" class="primary">前往登入</button>
+            </form>
+            <form action="{{ url_for('index') }}" style="display: inline;">
+                <button type="submit" class="secondary">返回首頁</button>
+            </form>
         </div>
     </footer>
 </article>

@@ -18,7 +18,7 @@
             "username": "test001",
             "email": "test001@test.com",
             "password": "12341234",
-            "phone": "0912345678",
+            "phone": "",
             "birthdate": "2026-05-04",
             "is_admin": false
         }

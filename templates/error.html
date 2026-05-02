@@ -4,7 +4,9 @@
     <h2>操作失敗</h2>
     <p>{{ message }}</p>
     <footer style="margin-top: 2rem;">
-        <a href="{{ url_for('index') }}" class="outline">返回首頁</a>
+        <form action="{{ url_for('index') }}" style="display: inline;">
+            <button type="submit" class="primary">返回首頁</button>
+        </form>
     </footer>
 </article>
 {% endblock %}

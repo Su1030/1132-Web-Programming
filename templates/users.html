@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ u.username }}</td>
                     <td>{{ u.email }}</td>
-                    <td>{{ u.phone | mask_phone }}</td>
+                    <td>{{ u.phone | mask_phone if u.phone else '未提供' }}</td>
                     <td>{{ u.birthdate | format_tw_date }}</td>
                     <td>
                         <div style="display: flex; gap: 5px;">

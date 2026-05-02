@@ -20,7 +20,7 @@
         </div>
         <div class="info-item">
             <span class="info-label">電話號碼</span>
-            <p>{{ phone }}</p>
+            {% if phone %}<p>{{ phone }}</p>{% else %}<p style="color: var(--secondary-color); font-style: italic;">未提供</p>{% endif %}
         </div>
         <div class="info-item">
             <span class="info-label">出生日期</span>

@@ -3,13 +3,17 @@
 <article class="content-card">
     <h2>註冊會員</h2>
     <form method="POST">
+        <p>名稱</p>
         <input type="text" name="username" placeholder="帳號" required>
+        <p>電子信箱</p>
         <input type="email" name="email" placeholder="Email" required>
+        <p>密碼</p>
         <input type="password" name="password" placeholder="密碼" required>
+        <p>電話</p>
         <input type="tel" name="phone" placeholder="電話" required>
+        <p>出生日期</p>
         <input type="date" name="birthdate" required>
         <button type="submit">註冊</button>
     </form>
 </article>
-
 {% endblock %}

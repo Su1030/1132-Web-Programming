@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "users": [
     {
@@ -22,4 +23,23 @@
       "birthdate": "2026-04-23"
     }
   ]
+=======
+{
+    "users": [
+        {
+            "username": "admin",
+            "email": "admin@example.com",
+            "password": "admin123",
+            "phone": "0912345678",
+            "birthdate": "1990-01-01"
+        },
+        {
+            "username": "3B117132",
+            "email": "test3B117132@gmail.com",
+            "password": "12341234",
+            "phone": "0123456789",
+            "birthdate": "2026-04-23"
+        }
+    ]
+>>>>>>> 61954bd (feat: 初次採用GIT更動程式架構)
 }

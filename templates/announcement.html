@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}系統公告 - 會員系統{% endblock %}
+
+{% block content %}
+<article class="content-card">
+    <header style="background-color: rgba(255, 255, 255, 0);">
+        <h2 style="margin-bottom: 0; color: var(--primary-color);">📢 系統公告</h2>
+        <p style="color: var(--secondary-color);">歡迎回來，{{ session.username }}</p>
+    </header>
+
+    <div class="info-list" style="background: rgba(59, 130, 246, 0.05); border-left: 5px solid var(--primary-color);">
+        <p><strong>【維護通知】</strong> 系統將於本週日凌晨進行例行性資料備份，屆時請勿頻繁修改資料。</p>
+        <p><strong>【新功能上線】</strong> 現在您可以進入個人資料頁面修改您的電話與出生日期。</p>
+    </div>
+
+    <footer style="background-color: rgba(255, 255, 255, 0);">
+        <div class="grid">
+            <form action="{{ url_for('profile') }}" style="display: inline;">
+                <button type="submit" class="primary">個人資料</button>
+            </form>
+            
+            {% if session.is_admin %}
+                <form action="{{ url_for('users_list_route') }}" style="display: inline;">
+                    <button type="submit" class="button contrast">會員管理 (管理者專屬)</button>
+                </form>
+            {% endif %}
+            
+            <form action="{{ url_for('logout') }}" style="display: inline;">
+                <button type="submit" class="secondary">登出系統</button>
+            </form>
+        </div>
+    </footer>
+</article>
+{% endblock %}

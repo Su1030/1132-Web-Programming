@@ -4,8 +4,13 @@
     <h2>會員系統首頁</h2>
     <p>歡迎使用本會員管理系統，請選擇您的操作：</p>
     <div class="grid">
-        <a href="{{ url_for('login_route') }}" class="primary">登入</a>
-        <a href="{{ url_for('register_route') }}" class="secondary">註冊</a>
+        <form action="{{ url_for('login_route') }}" method="GET" style="display: inline;">
+            <button type="submit" class="primary">登入</button>
+        </form>
+
+        <form action="{{ url_for('register_route') }}" method="GET" style="display: inline;">
+            <button type="submit" class="secondary">註冊</button>
+        </form>
     </div>
 </article>
 {% endblock %}

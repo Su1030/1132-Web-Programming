@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}編輯會員 - 管理中心{% endblock %}
+
+{% block content %}
+<article class="content-card">
+    <header class="content-title">
+        <h2 style="color: var(--primary-color);">🛠️ 編輯會員：{{ user.username }}</h2>
+        <p>管理者模式：您可以協助會員修正電話、生日或重設密碼。</p>
+    </header>
+
+    <form method="POST">
+        <div class="grid">
+            <label>
+                帳號
+                <input type="text" value="{{ user.username }}" readonly disabled>
+            </label>
+            <label>
+                電子郵件
+                <input type="text" value="{{ user.email }}" readonly disabled>
+            </label>
+        </div>
+
+        <label for="phone">聯絡電話</label>
+        <input type="text" id="phone" name="phone" value="{{ user.phone }}" placeholder="09xxxxxxxx">
+
+        <label for="birthdate">出生日期</label>
+        <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}">
+
+        <label for="password">重設密碼 (若不重設請留空)</label>
+        <input type="password" id="password" name="password" placeholder="輸入新密碼後點選更新">
+
+        <footer style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+        
+        <!-- 確認修改：維持 submit 功能 -->
+        <button type="submit" class="contrast" style="width: auto; min-width: 150px;">
+            確認修改
+        </button>
+        
+        <!-- 放棄並回清單：改用 JS 跳轉，並設定為 type="button" 避免誤觸提交 -->
+        <button type="button" class="outline" style="width: auto; min-width: 150px;"onclick="location.href='{{ url_for('users_list_route') }}'">
+            放棄並回清單
+        </button>
+        
+    </div>
+        </footer>
+    </form>
+    <form>
+</article>
+{% endblock %}

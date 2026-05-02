@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}個人資料 - 會員系統{% endblock %}
+
+{% block content %}
+<article class="content-card">
+    <h2>個人資料管理</h2>
+    <p style="color: var(--secondary-color);">您可以在此更新您的聯繫資訊與密碼</p>
+
+    <form method="POST">
+        <label for="username">帳號 (不可修改)</label>
+        <input type="text" id="username" value="{{ user.username }}" readonly disabled>
+
+        <label for="email">電子郵件 (必填)</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}" required>
+
+        <div class="grid">
+            <label for="phone">
+                電話
+                <input type="text" id="phone" name="phone" value="{{ user.phone }}" placeholder="09xxxxxxxx">
+            </label>
+            <label for="birthdate">
+                出生日期 (必填)
+                <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}" required>
+            </label>
+        </div>
+
+        <label for="password">更改密碼 (若不更改請留空)</label>
+        <input type="password" id="password" name="password" placeholder="請輸入 6-16 位新密碼">
+
+        <footer style="margin-top: 2rem;">
+            <div class="grid">
+                <button type="submit">更新資料</button>
+                <form action="{{ url_for('announcement') }}" style="display: inline;">
+                    <button type="submit" class="secondary">取消返回</button>
+                </form>
+            </div>
+        </footer>
+    </form>
+</article>
+{% endblock %}
